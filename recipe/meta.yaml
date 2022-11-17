@@ -42,3 +42,5 @@ extra:
   recipe-maintainers:
     - dhirschfeld
     - roederja
+  anaconda:
+    reason: Top 5000 package
