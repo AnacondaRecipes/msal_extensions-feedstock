@@ -10,22 +10,27 @@ source:
   sha256: ff4e787610913be676f205e24a8bcb713a045196c1aa0f8592f5741c6232491b
 
 build:
-  noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
+    - wheel
+    - setuptools
   run:
-    - python >=3.6
+    - python
     - msal >=0.4.1,<2.0
     - portalocker >=1.6,<3.0
 
 test:
   imports:
     - msal_extensions
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/AzureAD/microsoft-authentication-extensions-for-python
